@@ -1,0 +1,102 @@
+<!doctype html>
+<html ng-app="angularRoutingApp">
+<head>
+    <title>Node Authentication</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+    <link  rel="stylesheet" type="text/css" href="css/style.css">
+
+    <style type="text/css">
+
+        body
+        {
+            padding-top:10px;
+
+        }
+
+
+    </style>
+
+
+
+    <script src="libs/angular/angular.js"></script>
+    <script src="libs/angular-route/angular-route.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/clasificacionCtrl.js"></script>
+</head>
+
+
+
+<body>
+
+<div id="barra">
+
+    <ul>
+        <a ng-href="/profile" class="btn btn-warning"><span class="fa fa-user"></span>Profile</a>
+        <a ng-href="/clasificacion" class="btn btn-warning"><span class="fa fa-user"></span>Classif</a>
+        <a ng-href="/home" class="btn btn-warning"><span class="fa fa-user"></span>Home</a>
+
+    </ul>
+
+
+</div>
+
+
+<div class="container">
+
+    <div class="jumbotron text-center">
+        <h1><span class="fa fa-wrench" aria-hidden="true"></span> INDEX.HTML</h1>
+
+        <p>Login or Register with:</p>
+        <a href="/auth/login" class="btn btn-default"><span class="fa fa-user"></span> Local Login</a>
+        <a href="/auth/signup" class="btn btn-default"><span class="fa fa-user"></span> Local Signup</a>
+        <a href="/auth/facebook" class="btn btn-primary"><span class="fa fa-facebook"></span> </a>
+        <a href="/auth/google" class="btn btn-danger"><span class="fa fa-google-plus"></span> </a>
+        <a href="/auth/twitter" class="btn btn-primary"><span class="fa fa-twitter"></span> </a>
+
+        <br><br><br>
+        <a ng-href="/profile" class="btn btn-warning"><span class="fa fa-user"></span>Profile</a>
+        <a ng-href="/clasificacion" class="btn btn-warning"><span class="fa fa-user"></span>Classif</a>
+        <a ng-href="/home" class="btn btn-warning"><span class="fa fa-user"></span>Home</a>
+    </div>
+</div>
+<div ng-view/>
+</body>
+</html>
+
+
+
+
+
+
+<!-- index.html
+
+<html ng-app='angularRoutingApp'>
+<head>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+</head>
+<body ng-controller='mainController'>
+<header>
+    <h1>CableAPP</h1>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#Perfil">Perfil</a></li>
+            <li><a href="#Clasificacion">Clasificacion</a></li>         </ul>
+    </nav>
+</header>
+<div id="main">
+
+-->
+    <!-- Aquí inyectamos las vistas
+    <div ng-view></div>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.7/angular.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.3/angular-route.js"></script>
+<script src="angular-route.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
+
+-->
+

@@ -1,0 +1,23 @@
+<!--
+
+<div class="jumbotron text-center">
+    <h1>CLASIFICACION</h1>
+    <p>{{ message }}</p>
+</div>
+
+-->
+
+Esta es la pagina CLASIFICACIONES
+
+<div class="jumbotron text-center">
+    <h1><span class="fa fa-cog fa-spin"></span> Clasificación</h1>
+    <div ng-init="loadClasificacion()">
+
+        <p ng-repeat="posicion in clasificacion">
+          {{posicion.nombre}}  - {{posicion.apellidos}}
+        </p>
+
+    </div>
+</div>
+
+FIN CLASSIF
