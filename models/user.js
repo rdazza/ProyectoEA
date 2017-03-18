@@ -4,7 +4,6 @@
 var mongoose = require('mongoose');
 Schema   = mongoose.Schema;
 
-
 var userSchema = new Schema({
     nombre:    { type: String },
     apellidos:    { type: String },
@@ -18,8 +17,7 @@ var userSchema = new Schema({
         torneo: { type: Schema.ObjectId, ref: "Torneo" }
             }
     ]
-
-
 });
+
 
 module.exports = mongoose.model('User', userSchema);

@@ -15,7 +15,6 @@ var torneoSchema = new Schema({
 
         }
 
-
 });
 
 module.exports = mongoose.model('Torneo', torneoSchema);

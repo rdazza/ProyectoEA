@@ -11,6 +11,10 @@ config(['$routeProvider', '$locationProvider', function($routeProvider, $locatio
 
 }]);
 
+
+
+
+
 /*
 
 // Creación del módulo
