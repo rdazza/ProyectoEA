@@ -7,6 +7,7 @@ Schema   = mongoose.Schema;
 var clasifSchema = new Schema({
 
     torneo: {type: String},
+    nombre: {type: String},
     puntuacion: {type: String},
     posicion: {type: String}
 

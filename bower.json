@@ -1,0 +1,13 @@
+{
+  "name": "eaproject",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Ruben <ruben.molina.daza@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/rdazza/ProyectoEA",
+  "dependencies": {
+    "font-awesome": "fontawesome#^4.7.0"
+  }
+}

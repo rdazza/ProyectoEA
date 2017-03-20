@@ -2,14 +2,14 @@ var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
-var crypto = require('crypto');
+var crypto = require('crypto'); //para contraseña (¿?)
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose        = require('mongoose');
 var formidable = require('formidable');
 
 require('mongoose-middleware').initialize(mongoose);
-// Conexión a la base de datos de MongoDB que tenemos en local
+// Conexión a la base de datos de MongoDB forma local
 mongoose.connect('mongodb://localhost/proy', function(err, res) {
     if(err) throw err;
     console.log('Conexion con la Base de Datos realizada');
@@ -26,6 +26,7 @@ app.all('/*', function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
