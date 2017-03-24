@@ -8,9 +8,8 @@ var clasifSchema = new Schema({
 
     torneo: {type: String},
     nombre: {type: String},
-    puntuacion: {type: String},
-    posicion: {type: String}
-
+    //participantes array
+    puntuacion: {type: String}
     }
 );
 module.exports = mongoose.model('Clasificacion', clasifSchema);

@@ -4,6 +4,7 @@ config(['$routeProvider', '$locationProvider', function($routeProvider, $locatio
     $routeProvider.when('/profile', {templateUrl: 'partials/profile.html'});
     $routeProvider.when('/clasificacion', {templateUrl: 'partials/clasificacion.html', controller:'clasificacionCtrl'});
     $routeProvider.when('/home', {templateUrl: 'partials/home.html'});
+    //$routeProvider.when('/newuser', {templateUrl: 'partials/newuser.html'});
    // $routeProvider.when('/principal', {templateUrl: 'principal.html'});
     $routeProvider.otherwise({redirectTo: '/'});
 

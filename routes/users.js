@@ -174,7 +174,7 @@ router.post('/adduser', function(req, res, next) {
                 birthday: request.body.birthday,
                 password: request.body.password,
                 imageUrl: "http://localhost:3000/images/admin.png",
-                torneos: torneo
+                //torneos: torneo
 
             })
 

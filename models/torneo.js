@@ -8,6 +8,7 @@ var torneoSchema = new Schema({
     nombre:    { type: String },
     fecha:     {type: Date, default: Date.now},
     participantes:  { type: String },
+    //participantes array. participantes de dicho torneo.
     creador:
         {
             nombre:  { type: String },
