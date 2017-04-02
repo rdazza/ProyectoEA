@@ -1,10 +1,13 @@
 var angularRoutingApp = angular.module('angularRoutingApp', [
-    'ngRoute']).
+    'ngRoute','angularUtils.directives.dirPagination']).
 config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
     $routeProvider.when('/profile', {templateUrl: 'partials/profile.html'});
     $routeProvider.when('/clasificacion', {templateUrl: 'partials/clasificacion.html', controller:'clasificacionCtrl'});
     $routeProvider.when('/home', {templateUrl: 'partials/home.html'});
-    //$routeProvider.when('/newuser', {templateUrl: 'partials/newuser.html'});
+    $routeProvider.when('/', {templateUrl: 'partials/login.html',controller:'loginCtrl'});
+    $routeProvider.when('/users', {templateUrl: 'partials/listadouser.html',controller:'usersCtrl'});
+    $routeProvider.when('/new_user', {templateUrl: 'partials/newuser.html',controller:'usersCtrl'});
+    $routeProvider.when('/update_user', {templateUrl: 'partials/updateuser.html',controller:'usersCtrl'});
    // $routeProvider.when('/principal', {templateUrl: 'principal.html'});
     $routeProvider.otherwise({redirectTo: '/'});
 

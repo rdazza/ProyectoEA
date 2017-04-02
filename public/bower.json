@@ -8,6 +8,8 @@
   "license": "MIT",
   "homepage": "https://github.com/rdazza/ProyectoEA",
   "dependencies": {
-    "font-awesome": "fontawesome#^4.7.0"
+    "font-awesome": "fontawesome#^4.7.0",
+    "angularUtils-pagination": "angular-utils-pagination#^0.11.1",
+    "angular-route": "^1.6.4"
   }
 }

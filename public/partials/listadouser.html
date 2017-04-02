@@ -15,13 +15,66 @@ onclick = "location='/sitio.com/mipagina.php'"
 
 <!-- boton crear usuario -->
 
+<div  class="row">
+    <div style="margin-left: 4%;margin-right: 4%;margin-top: 2%;"class="col-lg-6">
+        <div class="input-group">
+     <span class="input-group-addon">
+       <i style="margin-right-right: 5px;" class="glyphicon glyphicon-search"></i>
+     </span>
+            <input type="text" class="form-control" placeholder="Buscar Usuario por nombre" ng-model="query">
+        </div>
+    </div>
+</div>
+<button style="margin-left: 4%;margin-right: 4%;margin-top: 2%;"  class="btn btn-primary" ng-click="newUser()">Crear Usuario</button>
+<div style="margin-left: 4%;margin-right: 4%;margin-top: 2%;" class="row">
+    <div class="chart-wrapper">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th><font></font></th>
+                <th><font>Nombre</font>&nbsp;</th>
+                <th><font>Apellidos</font>&nbsp;</th>
+                <th><font>Correo Electronico</font></th>
+            </tr>
+            </thead>
 
-<input type="submit" class="btn btn-success" value="Crear Usuario" href="/newuser.html"><CrearUsuario/>
+            <tr dir-paginate="user in users | filter:query | itemsPerPage: pageSize" pagination-id="branch">
+                <td data-title="'Image'">
+                    &nbsp;&nbsp;&nbsp;&nbsp;<img ng-if="user.imageUrl!=null" class="img-circle" src="{{user.imageUrl}}" height="65" width=65">
+                </td>
+                <td data-title="'Nombre'">
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="nocolor" ng-bind="user.nombre"></span><br>
+                </td>
+                <td data-title="'Apellidos'">
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="nocolor" ng-bind="user.apellidos" ></span><br>
+                </td>
+                <td  data-title="'Email'">
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="nocolor" ng-bind="user.email"></span><br>
+                </td>
 
-<table class="table table-striped">
+                <td  data-title="'Modificar'">
+                    &nbsp;&nbsp;&nbsp;&nbsp;<button  ng-click="updateUser(user)" type="button"
+                                                    class="btn btn-info ">Modificar
+                </button>
+                </td>
+                <td  data-title="'Eliminar'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button  type="button" class="btn btn-danger"
+                            ng-click="deleteUser(user)">Eliminar</button>
+                </td>
 
-
-
-</table>
-
-<button type="button" class="btn btn-danger"></button>
+            </tr>
+        </table>
+    </div>
+    <br>
+    <div ng-if="users !== undefined && !users.length" class="no-results">
+        <h5 style="text-align: center;vertical-align: middle;">No hay usuarios todavia</h5>
+    </div>
+    <div class="col-xs-9 col-md-10">
+        <dir-pagination-controls pagination-id="branch"></dir-pagination-controls>
+    </div>
+</div>
+<style>
+    .img-circle {
+        border-radius: 50%;
+    }
+</style>

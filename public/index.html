@@ -14,19 +14,19 @@
         }
 
     </style>
-
-
-    <script src="libs/angular/angular.js"></script>
-    <script src="libs/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <script src="bower_components/angularUtils-pagination/dirPagination.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/clasificacionCtrl.js"></script>
+    <script src="js/loginCtrl.js"></script>
+    <script src="js/usersCtrl.js"></script>
 </head>
 
 <body>
 
 <div id="barra">
 
-    <ul>
+    <ul ng-show="torbe">
         <a ng-href="/profile" class="btn btn-warning"><span class="fa fa-user"></span>Profile</a>
         <a ng-href="/clasificacion" class="btn btn-warning"><span class="fa fa-user"></span>Classif</a>
         <a ng-href="/home" class="btn btn-warning"><span class="fa fa-user"></span>Home</a>

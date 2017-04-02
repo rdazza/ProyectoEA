@@ -161,10 +161,6 @@ router.post('/adduser', function(req, res, next) {
             return resultado.status(409).jsonp("usuario " + nombre + " ya existe");
         }
         else {
-
-            var torneo={
-                torneo: request.body.torneos[0].torneo
-            }
             var user = new User({
                 nombre: request.body.nombre,
                 apellidos: request.body.apellidos,
@@ -174,7 +170,7 @@ router.post('/adduser', function(req, res, next) {
                 birthday: request.body.birthday,
                 password: request.body.password,
                 imageUrl: "http://localhost:3000/images/admin.png",
-                //torneos: torneo
+
 
             })
 
@@ -208,7 +204,7 @@ router.put('/:id', function(req, res, next) {
 });
 
     //POST - login User
-    loginUser = function (req, res) {
+router.post('/login', function(req, res, next) {
         resultado = res;
         var hash = crypto
             .createHash("md5")
@@ -218,34 +214,32 @@ router.put('/:id', function(req, res, next) {
         var p1;
         var p2;
         req.body.password = hash
-        var u = req.body.username;
-        User.find({username: u}, function (err, user) {
+        var email_user = req.body.email;
+        User.find({email: email_user}, function (err, user) {
+
             if (user.length == 0) {
-                return resultado.status(404).jsonp({"loginSuccessful": false, "username": u});
+                return resultado.status(404).jsonp({"loginSuccessful": false});
             }
             else {
-                var usuario = JSON.stringify(user);
-                console.log(user);
-                var res = usuario.split(",");
-                key = res[2].split(":");
-                p2 = key[1];
-                p1 = '"' + req.body.password + '"';
-                if (p1 == p2) {
+                console.log (user[0].nombre);
+                console.log (user[0].password);
+                console.log (req.body.password)
+                if (user[0].password == req.body.password) {
                     console.log ("Entramos..")
-                    return resultado.status(200).jsonp({"loginSuccessful": true, "user": user});
+                    return resultado.status(200).jsonp({"loginSuccessful": true});
 
                 }
                 else {
-                    return resultado.status(404).jsonp({"loginSuccessful": false, "username": u});
+                    return resultado.status(404).jsonp({"loginSuccessful": false});
                 }
             }
         });
 
-    };
+});
 
     //DELETE - Delete a User with specified ID
 router.delete('/:id', function(req, res, next) {
-    console.log (req)
+    console.log (req.params.id)
         return User.findById(req.params.id, function (err, user) {
             console.log('DELETE usuario');
             return user.remove(function (err) {
