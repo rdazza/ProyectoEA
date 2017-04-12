@@ -13,6 +13,7 @@ var userSchema = new Schema({
     birthday: { type: String},
     password: { type:String},
     imageUrl: {type: String},
+    rol: {type: String, default: 'register'},
     torneos: [{
         torneo: { type: Schema.ObjectId, ref: "Torneo" }
             }

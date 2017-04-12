@@ -2,9 +2,10 @@
 <html ng-app="angularRoutingApp">
 <head>
     <title>Node Authentication</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> <!-- load bootstrap css -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
     <link  rel="stylesheet" type="text/css" href="stylesheets/style.css">
+
 
     <style type="text/css">
         body
@@ -17,9 +18,11 @@
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.min.js"></script>
     <script src="bower_components/angularUtils-pagination/dirPagination.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/loginCtrl.js"></script>
     <script src="js/usersCtrl.js"></script>
+
 </head>
 
 <body>
@@ -36,30 +39,14 @@
 
 </div>
 
-<!--
-<div class="container">
-
-    <div class="jumbotron text-center">
-        <h1><span class="fa fa-wrench" aria-hidden="true"></span> INDEX.HTML</h1>
-
-        <p>Login or Register with:</p>
-        <a href="/auth/login" class="btn btn-default"><span class="fa fa-user"></span> Local Login</a>
-        <a href="/auth/signup" class="btn btn-default"><span class="fa fa-user"></span> Local Signup</a>
-        <a href="/auth/facebook" class="btn btn-primary"><span class="fa fa-facebook"></span> </a>
-        <a href="/auth/google" class="btn btn-danger"><span class="fa fa-google-plus"></span> </a>
-        <a href="/auth/twitter" class="btn btn-primary"><span class="fa fa-twitter"></span> </a>
-
-        <br><br><br>
-        <a ng-href="/profile" class="btn btn-warning"><span class="fa fa-user"></span>Profile</a>
-        <a ng-href="/clasificacion" class="btn btn-warning"><span class="fa fa-user"></span>Classif</a>
-        <a ng-href="/home" class="btn btn-warning"><span class="fa fa-user"></span>Home</a>
-    </div>
-</div>
--->
 
 
 <div ng-view/>
+
+
 </body>
+
+
 </html>
 
 

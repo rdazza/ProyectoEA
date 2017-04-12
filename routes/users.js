@@ -170,7 +170,7 @@ router.post('/adduser', function(req, res, next) {
                 birthday: request.body.birthday,
                 password: request.body.password,
                 imageUrl: "http://localhost:3000/images/admin.png",
-
+                torneos: request.body.torneos
 
             })
 
@@ -184,22 +184,38 @@ router.post('/adduser', function(req, res, next) {
 
     //PUT - Update a register already exists
 router.put('/:id', function(req, res, next) {
+    console.log (req.params.id)
     User.findById(req.params.id, function (err, user) {
         console.log('PUT');
-        console.log(req.body);
+        var torneos=[]
+        if (user.torneos.length==0){
+            torneos.push(req.body.torneos[0])
+        }
+        else{
+            console.log ("2222222222222222")
+            for (var i=0; i<user.torneos.length; i++){
+                torneos.push(user.torneos[i])
+            }
 
-        user.nombre = req.body.nombre;
-        user.apellidos = req.body.apellidos;
-        user.dni = req.body.dni;
-        user.email = req.body.email;
-        user.phone = req.body.phone;
-        user.birthday = req.body.birthday;
-        user.imageUrl = req.body.imageUrl;
+            torneos.push(req.body.torneos[0])
 
-        user.save(function (err) {
-            if (err) return res.send(500, err.message);
-            res.status(200).jsonp(user);
-        });
+        }
+        console.log ("LOS TORNEOS SON:",torneos);
+            user.nombre = req.body.nombre;
+            user.apellidos = req.body.apellidos;
+            user.dni = req.body.dni;
+            user.email = req.body.email;
+            user.phone = req.body.phone;
+            user.birthday = req.body.birthday;
+            user.imageUrl = req.body.imageUrl;
+            user.torneos = torneos;
+            user.save(function (err) {
+                if (err) return res.send(500, err.message);
+                res.status(200).jsonp(user);
+            });
+
+
+
     });
 });
 
