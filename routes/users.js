@@ -73,7 +73,7 @@ router.get('/:id', function(req, res, next) {
     var filename;
     var imagen;
 
-    //PUT- Funcion para subir la foto al servidor (No funciona, arreglar)
+    //PUT- Funcion para subir la foto al servidor
 router.put('/upload/:nombre', function(req, res, next) {
     console.log ("dentro");
         var form = new formidable.IncomingForm();
@@ -123,6 +123,12 @@ router.put('/upload/:nombre', function(req, res, next) {
 
     });
 
+/*
+router.post('/:id/torneos', function(req, res, next) {
+
+
+}
+*/
 router.post('/adduser', function(req, res, next) {
     console.log('POST');
     console.log(req.body);
