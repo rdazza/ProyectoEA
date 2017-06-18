@@ -1,10 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<div style="margin-left: 4%;margin-right: 4%;margin-top: 2%;" class="row">
+    <div class="chart-wrapper">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th><font></font></th>
+                <th><font>Nombre</font>&nbsp;</th>
+                <th><font>Apellidos</font>&nbsp;</th>
+                <th><font>Correo Electronico</font></th>
+            </tr>
+            </thead>
+
+            <tr dir-paginate="register in registers | filter:query | itemsPerPage: pageSize" pagination-id="branch">
+                <td data-title="'Image'">
+                    &nbsp;&nbsp;&nbsp;&nbsp;<img ng-if="register.participante.imageUrl!=null" class="img-circle" src="{{register.participante.imageUrl}}" height="65" width=65">
+                </td>
+                <td data-title="'Nombre'">
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="nocolor" ng-bind="register.participante.nombre"></span><br>
+                </td>
+                <td data-title="'Apellidos'">
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="nocolor" ng-bind="register.participante.apellidos" ></span><br>
+                </td>
+                <td  data-title="'Email'">
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="nocolor" ng-bind="register.participante.email"></span><br>
+                </td>
+
+                <td  data-title="'Result'">
+                    &nbsp;&nbsp;&nbsp;&nbsp;<input style="text-align: center;" ng-change="addpoints($index,value,register.participante)"type="Number" ng-model="value" min="0" max="10" required>
+                </button>
+                </td>
+
+
+            </tr>
+        </table>
+    </div>
+    <br>
+    <div ng-if="registers !== undefined && !registers.length" class="no-results">
+        <h5 style="text-align: center;vertical-align: middle;">No hay participantes todavia</h5>
+    </div>
+    <div class="col-xs-9 col-md-10">
+        <dir-pagination-controls pagination-id="branch"></dir-pagination-controls>
+    </div>
+</div>
+<div style="margin-left: 4%;margin-right: 4%"class="row">
+    <div class="col-md-1">
+        <button type="submit" class="btn btn-success" ng-click="sendResult()">Aceptar</button>
+    </div>
+    <div class="col-md-1">
+        <button type="submit" class="btn btn-danger" ng-click="cancel()">Cancelar</button>
+    </div>
+</div>
+
+<div style="margin-top:2%;margin-left: 4%;margin-right: 4%" ng-show="alert" class="alert alert-danger">
+     Alguno de los resultados tiene un valor igual a cero o mayor a 10;
+</div>
+
+
+</div>
+</div>
+<style>
+    .img-circle {
+        border-radius: 50%;
+    }
+</style>

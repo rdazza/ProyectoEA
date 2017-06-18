@@ -5,7 +5,9 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> <!-- load bootstrap css -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
     <link  rel="stylesheet" type="text/css" href="stylesheets/style.css">
-
+    <link  rel="stylesheet" type="text/css" href="css/pure-css-checkbox.css">
+    <link rel="stylesheet" href="bower_components/sweetalert2/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="bower_components/bootstrap-social/bootstrap-social.css">
 
     <style type="text/css">
         body
@@ -13,16 +15,21 @@
             padding-top:10px;
 
         }
-
     </style>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.min.js"></script>
     <script src="bower_components/angularUtils-pagination/dirPagination.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="bower_components/sweetalert2/dist/sweetalert2.min.js"></script>
+    <!--script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script-->
     <script src="js/main.js"></script>
     <script src="js/loginCtrl.js"></script>
     <script src="js/usersCtrl.js"></script>
-
+    <script src="js/torneosCtrl.js"></script>
+    <script src="js/registerCtrl.js"></script>
+    <script src="js/rankingCtrl.js"></script>
+    <script src="js/misTorneosCtrl.js"></script>
+    <script src="js/reservaCtrl.js"></script>
+    <script src="js/misReservasCtrl.js"></script>
 </head>
 
 <body>
@@ -30,58 +37,38 @@
 <div id="barra">
 
     <ul ng-show="torbe">
-        <a ng-href="/profile" class="btn btn-warning"><span class="fa fa-user"></span>Profile</a>
-        <a ng-href="/clasificacion" class="btn btn-warning"><span class="fa fa-user"></span>Classif</a>
-        <a ng-href="/home" class="btn btn-warning"><span class="fa fa-user"></span>Home</a>
+        <a ng-href="/update_user" class="btn btn-warning"><span class="fa fa-user"></span>Editar Perfil</a>
+        <a ng-href="/users" class="btn btn-warning"><span class="fa fa-user"></span>Usuarios</a>
+        <a ng-href="/torneos" class="btn btn-warning"><span class="fa fa-user"></span>Torneos</a>
 
+       <!--
+        <a ng-href="/reservas" class="btn btn-warning"><span class="fa fa-user"></span>Reservas</a>
+        -->
+        <img  style=" position: absolute;right:330px" class="img-circle" ng-src="{{user.imageUrl}}" height="30" width=30">
+        <font style=" position: absolute;right:150px;padding-top:8px" >Bienvenido, {{user.nombre}}</font>
+        <button style=" position: absolute;right:50px"type="button" class="btn btn-default btn-sm" ng-click="exit_app()">
+            <span class="glyphicon glyphicon-log-out"></span> Log out
+        </button>
     </ul>
-
-
+    <ul ng-show="seeRegister">
+        <a ng-href="/update_user" class="btn btn-warning"><span class="fa fa-user"></span>Editar Perfil</a>
+        <a ng-href="/torneos_reg" class="btn btn-warning"><span class="fa fa-user"></span>Torneos</a>
+        <a ng-href="/mis_torneos" class="btn btn-warning"><span class="fa fa-user"></span>Mis Torneos</a>
+        <a ng-href="/reservas" class="btn btn-warning"><span class="fa fa-user"></span>Reservas</a>
+        <a ng-href="/mis_reservas" class="btn btn-warning"><span class="fa fa-user"></span>Mis Reservas</a>
+        <img  style=" position: absolute;right:330px" class="img-circle" ng-src="{{user.imageUrl}}" height="30" width=30">
+        <font style=" position: absolute;right:150px;padding-top:8px" >Bienvenido, {{user.nombre}}</font>
+        <button style=" position: absolute;right:50px"type="button" class="btn btn-default btn-sm" ng-click="exit_app()">
+            <span class="glyphicon glyphicon-log-out"></span> Log out
+        </button>
+    </ul>
 </div>
-
-
 
 <div ng-view/>
-
-
-</body>
-
-
-</html>
-
-
-
-
-
-
-<!-- index.html
-
-<html ng-app='angularRoutingApp'>
-<head>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
-</head>
-<body ng-controller='mainController'>
-<header>
-    <h1>CableAPP</h1>
-    <nav>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#Perfil">Perfil</a></li>
-            <li><a href="#Clasificacion">Clasificacion</a></li>         </ul>
-    </nav>
-</header>
-<div id="main">
-
--->
-    <!-- Aquí inyectamos las vistas
-    <div ng-view></div>
-</div>
-<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.7/angular.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.3/angular-route.js"></script>
-<script src="angular-route.js"></script>
-<script src="js/main.js"></script>
 </body>
 </html>
-
--->
-
+<style>
+    .img-circle {
+        border-radius: 50%;
+    }
+</style>

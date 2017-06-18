@@ -1,46 +1,50 @@
 <center>
-
     <div class="col-md-12">
         <IMG SRC="./images/logo.png" WIDTH=400 HEIGHT=200 BORDER=20 VSPACE=30 HSPACE=30>
     </div>
-
-    <div class="col-md-5">
-        <div class="form-group">
-            <label for="userlogin" class="col-lg-2 control-label">Login</label>
-                <div class="col-lg-10">
+</center>
+<div style="margin-top: 5%;position: relative">
+    <center>
+        <div style="padding-left: 35%" class="row">
+            <div class="form-group">
+                <label for="userlogin" style="margin-right: 3%"class="col-lg-1 control-label">Login</label>
+                <div class="col-lg-5">
                     <input type="email" class="form-control" id="userlogin" ng-model="login.email"
                            placeholder="Login con email">
                 </div>
-        </div>
-    </div>
-
-    <div class="col-md-5">
-        <div class="form-group">
-            <label for="passwordlogin" class="col-lg-2 control-label">Contraseña</label>
-             <div class="col-lg-10">
-                <input type="password" class="form-control" id="passwordlogin" ng-model="login.password"
-                       placeholder="Contraseña">
-             </div>
-    </div>
-    </div>
-    <br><br><br><br><br><br><br><br><br>
-
-
-        <div class="col-md-13">
-            <button type="button" ng-disabled="!login.email || !login.password"class="btn btn-success" ng-click="addlogin(login)">Login</button>
-        </div>
-
-
-
-            <button style="margin-left: 4%;margin-right: 4%;margin-top: 2%;"  class="btn btn-primary" ng-click="newUser()">Regístrate</button>
-
-
-
-
-            <br><br><br><br><br><br><br><br><br>
-            <div ng-show="alert"class="alert alert-danger alert-dismissable">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-                <strong>CUIDAO!</strong> El usuario o la contraseña son incorrectos.
             </div>
+        </div>
 
+        <div style="padding-left: 35%"class="row">
+            <div class="form-group">
+                <label for="passwordlogin" style="margin-right: 3%" class="col-lg-1 control-label">Contraseña</label>
+                <div class="col-lg-5">
+                    <input type="password" class="form-control" id="passwordlogin" ng-model="login.password"
+                           placeholder="Contraseña">
+                </div>
+            </div>
+        </div>
+    </center>
+</div>
+
+
+
+<center>
+    <div style="margin-top: 2%" class="row">
+        <button type="button" ng-disabled="!login.email || !login.password"class="btn btn-success" ng-click="addlogin(login)">Login</button>
+        <button style="margin-left: 2%" class="btn btn-primary" ng-click="newUser()">Regístrate</button>
+    </div>
+
+   <!-- <div style="margin-top: 2%;margin-left: 3%" class="row">
+        <a ng-click="goFacebook()" class="btn  btn-social btn-facebook">
+            <span class="fa fa-facebook"></span>
+            Iniciar sesión con Facebook
+        </a>
+    </div>-->
+
+    <div ng-show="alert"class="alert alert-danger alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+        <strong>CUIDAO!</strong> El usuario o la contraseña son incorrectos.
+    </div>
 </center>
+

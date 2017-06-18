@@ -61,7 +61,9 @@ router.get('/:id', function(req, res, next) {
             if (err) return res.send(500, err.message);
 
             console.log('GET /user/' + req.params.id);
-            res.status(200).jsonp(user);
+            Torneo.populate(user, {path: "torneos.torneo"}, function (err, user) {
+                res.status(200).send(user);
+            });
         });
     });
 
@@ -176,6 +178,7 @@ router.post('/adduser', function(req, res, next) {
                 birthday: request.body.birthday,
                 password: request.body.password,
                 imageUrl: "http://localhost:3000/images/admin.png",
+                rol: request.body.rol,
                 torneos: request.body.torneos
 
             })
@@ -187,13 +190,72 @@ router.post('/adduser', function(req, res, next) {
 
         }
     };
+router.put('/addparticipante-torneo/:id', function(req, res, next) {
+    console.log (req.params.id)
+    Torneo.findById(req.params.id, function (err, torneo) {
+        console.log('PUT');
+        var participante={
+            participante: req.body.idplayer
+        }
+        torneo.participantes.push(participante)
+        torneo.save(function (err) {
+            if (err) return res.send(500, err.message);
+            console.log (torneo)
+            Torneo.populate(torneo, {path: "participantes.participante"}, function (err, torneo) {
+                res.status(200).send(torneo);
+            });
 
+        });
+
+
+
+
+    });
+
+});
+router.put('/registro-torneo/:id', function(req, res, next) {
+    console.log (req.params.id)
+    User.findById(req.params.id, function (err, user) {
+        console.log('PUT');
+        console.log (req.body.torneo)
+        var torneo={
+            torneo: req.body.torneo._id
+        }
+        var torneos=[]
+         if (user.torneos.length==0){
+         torneos.push(torneo)
+         }
+         else{
+         for (var i=0; i<user.torneos.length; i++){
+         torneos.push(user.torneos[i])
+         }
+
+         torneos.push(torneo);
+
+         }
+
+        user.torneos = torneos;
+        user.save(function (err) {
+            if (err) return res.send(500, err.message);
+            console.log (user)
+            Torneo.populate(user, {path: "torneos.torneo"}, function (err, user) {
+                res.status(200).send(user);
+            });
+
+        });
+
+
+
+
+    });
+
+});
     //PUT - Update a register already exists
 router.put('/:id', function(req, res, next) {
     console.log (req.params.id)
     User.findById(req.params.id, function (err, user) {
         console.log('PUT');
-        var torneos=[]
+        /*var torneos=[]
         if (user.torneos.length==0){
             torneos.push(req.body.torneos[0])
         }
@@ -205,8 +267,8 @@ router.put('/:id', function(req, res, next) {
 
             torneos.push(req.body.torneos[0])
 
-        }
-        console.log ("LOS TORNEOS SON:",torneos);
+        }*/
+
             user.nombre = req.body.nombre;
             user.apellidos = req.body.apellidos;
             user.dni = req.body.dni;
@@ -214,7 +276,7 @@ router.put('/:id', function(req, res, next) {
             user.phone = req.body.phone;
             user.birthday = req.body.birthday;
             user.imageUrl = req.body.imageUrl;
-            user.torneos = torneos;
+           // user.torneos = torneos;
             user.save(function (err) {
                 if (err) return res.send(500, err.message);
                 res.status(200).jsonp(user);
@@ -227,6 +289,7 @@ router.put('/:id', function(req, res, next) {
 
     //POST - login User
 router.post('/login', function(req, res, next) {
+    console.log ("HOLAAAAAAAAAAAAAAAAAAA")
         resultado = res;
         var hash = crypto
             .createHash("md5")
@@ -248,7 +311,7 @@ router.post('/login', function(req, res, next) {
                 console.log (req.body.password)
                 if (user[0].password == req.body.password) {
                     console.log ("Entramos..")
-                    return resultado.status(200).jsonp({"loginSuccessful": true});
+                    return resultado.status(200).jsonp({"loginSuccessful": true, "player":user[0]});
 
                 }
                 else {
@@ -256,6 +319,25 @@ router.post('/login', function(req, res, next) {
                 }
             }
         });
+
+});
+
+router.post('/addresult/:idtorneo', function(req, res, next) {
+    User.findById(req.body._id, function (err, user) {
+        console.log (user)
+        for (var i=0; i<user.torneos.length; i++){
+            if (user.torneos[i].torneo==req.params.idtorneo){
+                user.torneos[i].resultado = req.body.resultado;
+                user.save(function (err) {
+                    if (err) return res.send(500, err.message);
+                    res.status(200).jsonp(user);
+                });
+                break;
+            }
+
+
+        }
+    });
 
 });
 
@@ -274,16 +356,5 @@ router.delete('/:id', function(req, res, next) {
             });
         });
 });
-
-
-    //endpoints
-    /*app.get('/allusers', AllUsers);
-    app.get('/users/', findAllUsers);
-    app.post('/adduser/', addUser);
-    app.get('/user/:id', findById);
-    app.put('/user/:id', updateUser);
-    app.delete('/user/:id', deleteUser);
-    app.post('/user/login', loginUser);
-    app.put('/upload/:nombre', uploadimage);*/
 
 module.exports = router;

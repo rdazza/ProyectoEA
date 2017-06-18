@@ -7,14 +7,17 @@ Schema   = mongoose.Schema;
 var torneoSchema = new Schema({
     nombre:    { type: String },
     fecha:     {type: Date, default: Date.now},
-    participantes:  { type: String },
+    participantes:  [{
+        participante: { type: Schema.ObjectId, ref: "User" },
+    }
+    ],
     //participantes array. participantes de dicho torneo.
     creador:
         {
             nombre:  { type: String },
             email: {type: String}
-
-        }
+        },
+    reserva: {type: Date}
 
 });
 

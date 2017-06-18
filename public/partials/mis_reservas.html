@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+
+<form class="form-horizontal" role="form">
+
+<div ng-repeat="reserva in reservas" class="form-group">
+    <div class="col-lg-2">
+        <label style="margin-top: 1%">Dia que has reservado</label>
+    </div>
+    <div class="col-lg-20">
+    <span for="nombre"  class="col-lg-2 control-label">{{reserva.fecha | date:"MM/dd/yyyy"}}</span>
+        <span for="nombre" style="margin-left: 1%" class="col-lg-2 control-label">Numero de participantes: {{reserva.participantes}}</span><br>
+    </div>
+
+
+</div>
+</form>

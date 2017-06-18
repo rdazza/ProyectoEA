@@ -5,7 +5,6 @@ var myApp = angular.module('angularRoutingApp');
 
 myApp.controller('usersCtrl', ['$scope','$rootScope','$http','$location','$route', function ($scope, $rootScope, $http,$location,$route){
     $scope.pageSize=10;
-    $rootScope.torbe=true;
         $http({
             method: 'GET',
             url: 'http://localhost:3000/users/allusers'
@@ -35,6 +34,7 @@ myApp.controller('usersCtrl', ['$scope','$rootScope','$http','$location','$route
             method: 'PUT',
             data: $rootScope.user,
             url: '/users/'+$rootScope.user._id
+
         }).then(function successCallback(response) {
             console.log(response);
             $location.path('/users')

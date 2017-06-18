@@ -13,11 +13,14 @@ var userSchema = new Schema({
     birthday: { type: String},
     password: { type:String},
     imageUrl: {type: String},
-    rol: {type: String, default: 'register'},
+    idProvider: {type: Number},
+    imgProvider: {type: String},
+    rol: {type: String, default: "register"},
     torneos: [{
-        torneo: { type: Schema.ObjectId, ref: "Torneo" }
+        torneo: { type: Schema.ObjectId, ref: "Torneo" },
+        resultado: {type: Number}
             }
-    ]
+    ],
 });
 
 

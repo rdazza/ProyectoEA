@@ -1,10 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<div  class="row">
+    <div style="margin-left: 4%;margin-right: 4%;margin-top: 2%;"class="col-lg-6">
+        <div class="input-group">
+     <span class="input-group-addon">
+       <i style="margin-right-right: 5px;" class="glyphicon glyphicon-search"></i>
+     </span>
+            <input type="text" class="form-control" placeholder="Buscar Torneo por nombre" ng-model="query">
+        </div>
+    </div>
+</div>
+
+<div style="margin-left: 4%;margin-right: 4%;margin-top: 2%;" class="row">
+    <div class="chart-wrapper">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th><font></font></th>
+                <th><font>Torneo</font>&nbsp;</th>
+                <th><font>Participantes</font>&nbsp;</th>
+                <th><font>Inscripcion</font></th>
+            </tr>
+            </thead>
+
+            <tr dir-paginate="torneo in torneos | filter:query | itemsPerPage: pageSize" pagination-id="branch">
+                <td data-title="'Image'">
+                    &nbsp;&nbsp;&nbsp;&nbsp;<img  class="img-circle" ng-src="./images/copa.png" height="65" width=65">
+                </td>
+                <td data-title="'Torneo'">
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="nocolor" ng-bind="torneo.nombre"></span><br>
+                </td>
+                <td data-title="'Participantes'">
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="nocolor" ng-bind="torneo.participantes.length"></span><br>
+                </td>
+                <td  data-title="'Clasificacion'">
+                    &nbsp;&nbsp;&nbsp;&nbsp;<button  ng-click="goRanking(torneo)" type="button"
+                                                     class="btn btn-info ">Clasificacion
+                </button>
+                </td>
+
+            </tr>
+        </table>
+    </div>
+    <br>
+    <div ng-if="torneos !== undefined && !torneos.length" class="no-results">
+        <h5 style="text-align: center;vertical-align: middle;">No hay torneos todavia</h5>
+    </div>
+    <div class="col-xs-9 col-md-10">
+        <dir-pagination-controls pagination-id="branch"></dir-pagination-controls>
+    </div>
+</div>
+<style>
+    .img-circle {
+        border-radius: 50%;
+    }
+</style>

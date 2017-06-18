@@ -1,10 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<div style="margin-left: 4%;margin-right: 4%;margin-top: 2%;" class="row">
+    <div class="chart-wrapper">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th><font>Posicion</font>&nbsp;</th>
+                <th><font>Nombre</font>&nbsp;</th>
+                <th><font>Apellidos</font>&nbsp;</th>
+                <th><font>Correo Electronico</font></th>
+                <th><font>Puntuacion</font></th>
+            </tr>
+            </thead>
+
+            <tr dir-paginate="ranking in rankings | orderBy: '-resultado' | filter:query | itemsPerPage: pageSize" pagination-id="branch">
+                <td data-title="'Posicion'">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="nocolor" ng-bind="$index+1"></span><br>
+                </td>
+                <td data-title="'Nombre'">
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="nocolor" ng-bind="ranking.nombre"></span><br>
+                </td>
+                <td data-title="'Apellidos'">
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="nocolor" ng-bind="ranking.apellidos" ></span><br>
+                </td>
+                <td  data-title="'Email'">
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="nocolor" ng-bind="ranking.email"></span><br>
+                </td>
+                <td  data-title="'Email'">
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="nocolor" ng-bind="ranking.resultado"></span><br>
+                </td>
+
+            </tr>
+        </table>
+    </div>
+    <br>
+    <div ng-if="rankings !== undefined && !rankings.length" class="no-results">
+        <h5 style="text-align: center;vertical-align: middle;">No hay participantes todavia</h5>
+    </div>
+    <div class="col-xs-9 col-md-10">
+        <dir-pagination-controls pagination-id="branch"></dir-pagination-controls>
+    </div>
+</div>
+<div style="margin-left: 4%;margin-right: 4%"class="row">
+    <div class="col-md-1">
+        <button type="submit" class="btn btn-success" ng-click="goBack()">Atras</button>
+    </div>
+</div>
+
+<div style="margin-top:2%;margin-left: 4%;margin-right: 4%" ng-show="alert" class="alert alert-danger">
+    Alguno de los resultados tiene un valor igual a cero o mayor a 10;
+</div>
+
+
+</div>
+</div>
+<style>
+    .img-circle {
+        border-radius: 50%;
+    }
+</style>
