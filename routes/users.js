@@ -125,12 +125,36 @@ router.put('/upload/:nombre', function(req, res, next) {
 
     });
 
-/*
-router.post('/:id/torneos', function(req, res, next) {
+router.post("/register-oauth", function (req, res) {
+    console.log(req.body)
+    User.findOne({"idProvider": req.body.idProvider}, function (err, player) {
+        if (!err) {
+            if (!player) {
+                console.log("PINEY")
+                var hash = crypto
+                    .createHash("md5")
+                    .update(req.body.password)
+                    .digest('hex');
+                req.body.password = hash
+                var player = new User({
+                    email: req.body.email,
+                    password: req.body.password,
+                    apellidos: req.body.apellidos,
+                    nombre: req.body.nombre,
+                    imageUrl: req.body.imageUrl,
+                    idProvider: req.body.idProvider,
 
-
-}
-*/
+                });
+                player.save(function (err) {
+                    if (err) return res.status(500).send(err.message);
+                    res.status(200).jsonp(player);
+                });
+            } else {
+                res.send(player);
+            }
+        }
+    });
+});
 router.post('/adduser', function(req, res, next) {
     console.log('POST');
     console.log(req.body);

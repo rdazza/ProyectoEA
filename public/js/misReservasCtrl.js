@@ -13,6 +13,12 @@ myApp.controller('misReservasCtrl', ['$scope','$rootScope','$http','$location','
         url: 'http://localhost:3000/reservas/allreservas'
     }).then(function successCallback(response) {
         console.log (response)
+        response.data= response.data.filter(function(obj){
+
+            console.log (obj.nombre)
+            return obj.nombre._id==$rootScope.idplayer;
+        })
+
         $scope.reservas = response.data;
         // this callback will be called asynchronously
         // when the response is available
